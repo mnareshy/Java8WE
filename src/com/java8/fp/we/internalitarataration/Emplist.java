@@ -8,13 +8,15 @@ import java.util.Iterator;
 public class Emplist extends ArrayList<Employee> {
 	
 	public void forEachEmp(EmployeeAction empAction) {
-		Iterator empItarator = this.iterator();
-
-		while (empItarator.hasNext()) {
+		
+		
+		for(Employee employee : this){
 			
-			Employee employee = (Employee) empItarator.next();
+			
 			empAction.perform(employee);
+			
 		}
-
+		
+		
 	}
 }

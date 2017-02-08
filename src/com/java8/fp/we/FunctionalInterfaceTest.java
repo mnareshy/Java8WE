@@ -1,25 +1,25 @@
 package com.java8.fp.we;
 
 
-// to be corrected
-import com.java8.fp.we.FunctionalInterfaceTest.Alert;
-import com.java8.fp.we.FunctionalInterfaceTest.Banking;
+
 
 public class FunctionalInterfaceTest {
+	
 	public static void main(String[] args) {
 		FunctionalInterfaceTest fiTest = new FunctionalInterfaceTest();
-		Banking deposit = (balance, optMoney) -> {
-			return (long) (balance + optMoney);
-		};
-		Banking withdraw = (balance, optMoney) -> {
-			return (long) (balance - optMoney);
-		};
+		
+		Banking deposit = (balance, optMoney) -> (balance + optMoney);
+		
+		Banking withdraw = (balance, optMoney) -> (balance - optMoney);
+		
+		
 		System.out.println(fiTest.bankOps(10000, 2000, deposit));
 		System.out.println(fiTest.bankOps(10000, 2000, withdraw));
-		Alert alert = (message) -> {
-			System.out.println(message);
-		};
+		
+		Alert alert = (message) -> 	System.out.println(message);
+		
 		fiTest.alertMsg("hey youare done with banking", alert);
+		
 		alert.alertMessage("hey youare done with banking");
 	}
 
@@ -31,3 +31,6 @@ public class FunctionalInterfaceTest {
 		alert.alertMessage(message);
 	}
 }
+
+
+
