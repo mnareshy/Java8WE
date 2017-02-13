@@ -4,8 +4,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.OptionalInt;
+import java.util.function.Function;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
+
+import com.sun.org.apache.xalan.internal.xsltc.compiler.util.CompareGenerator;
 
 import sun.applet.Main;
 
@@ -162,8 +165,32 @@ public class EmployeeMaxGrade {
 		
 //		We go with lamda expression for both the operations -TBD
 		
-//		Function<Employee, Integer> key = emp1 -> emp1.
+/*		
+		Function<Employee, Integer> key = new Function<Employee, Integer>(){
+
+			@Override
+			public Integer apply(Employee employee) {
+				// TODO Auto-generated method stub
+				return employee.getLastYearMaxGrade();
+			}
+			
+		};
 		
+*/
+		
+		
+		Function<Employee, Integer> key = emp -> emp.getLastYearMaxGrade();
+		Comparator<Integer> keyCompare = (i1 , i2) -> Integer.compare(i1, i2);
+		
+		
+		Comparator<Employee> compareByMacGrd = 
+				(emp1 , emp2) -> keyCompare.compare(key.apply(emp1),key.apply(emp2));
+				
+				
+// 		In case of natural ordering this can be represented in single line
+				
+		Comparator<Employee> compareByMacGrd1 = 
+					(emp1 , emp2) -> key.apply(emp1).compareTo(key.apply(emp2));		
 		
 				
 		}
