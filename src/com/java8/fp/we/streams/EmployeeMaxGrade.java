@@ -185,18 +185,69 @@ public class EmployeeMaxGrade {
 		
 		Comparator<Employee> compareByMacGrd = 
 				(emp1 , emp2) -> keyCompare.compare(key.apply(emp1),key.apply(emp2));
+			
+				
+//	 	If we believe that the comparator is only on grades then keyCompare can turn into grade compare
+//		where gradeCompare compares only integers
+				
+		Comparator<Employee> gradeCompare = (emp1 , emp2) -> Integer.compare(key.apply(emp1), key.apply(emp2));
 				
 				
 // 		In case of natural ordering this can be represented in single line
 				
 		Comparator<Employee> compareByMacGrd1 = 
 					(emp1 , emp2) -> key.apply(emp1).compareTo(key.apply(emp2));		
+
+					
+/*	    java 8 provies a built-in static method to simplify it much easier
+	    
+	     static <T,U extends Comparable<? super U>>  Comparator<T>	
+	    	comparing(Function<? super T,? extends U> keyExtractor)
+	    
+	     Accepts a function that extracts a Comparable sort key from a type T, 
+	     and returns a Comparator<T> that compares by that sort key.
+*/ 
+					
+//		Function<Employee, Integer> key = emp -> emp.getLastYearMaxGrade();
+					
+		Comparator<Employee> comparator = 	Comparator.comparing(emp -> emp.getLastYearMaxGrade());	
 		
-				
+		System.out.println(comparator.compare(employee1, employee2));
+		
+//		It is very simple to change the comparision on the lateast grades 
+		
+		Comparator<Employee> comparator1 = 	Comparator.comparing(emp -> emp.getLatestGrade());	
+		
+		
+		System.out.println(employee1.getLatestGrade()+":"+employee2.getLatestGrade());
+		System.out.println(comparator1.compare(employee1, employee2));
+		
+		
+//		using streams
+		
+		
+/*	Stream<Integer> gradeStream =   employee.getYearGrades().stream();
+		
+		IntStream  intGradeStream = gradeStream
+									.mapToInt(i -> (employee.getTrainingsAttended() > 5 & i < 10 ) ? i+1 : i);
+		
+		employee.setLastYearMaxGrade(intGradeStream.max().getAsInt());*/
+		
+		ArrayList<Employee> empList = new ArrayList<Employee>();
+		
+		empList.add(employee);
+		empList.add(employee1);
+		empList.add(employee2);
+		empList.add(employee3);
+	/*	
+		
+		empList.stream()
+		.map(emp1 -> emp1.setLastYearMaxGrade((employee.getTrainingsAttended() > 5 & i < 10 ) ? i+1 : i));
+		
+	*/			
 		}
 	
 	
-
 
 
 }

@@ -37,6 +37,11 @@ public class Employee {
 	public List getYearGrades() {
 		return yearGrades;
 	}
+	
+	public int getLatestGrade(){
+		
+		return this.yearGrades.get(yearGrades.size()-1);
+	}
 
 	public void setYearGrades(List yearGrades) {
 		this.yearGrades = yearGrades;
