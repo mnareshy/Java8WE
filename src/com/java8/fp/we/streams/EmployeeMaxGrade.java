@@ -226,25 +226,13 @@ public class EmployeeMaxGrade {
 //		using streams
 		
 		
-/*	Stream<Integer> gradeStream =   employee.getYearGrades().stream();
+		Stream<Integer> gradeStream1 =   employee.getYearGrades().stream();
 		
-		IntStream  intGradeStream = gradeStream
-									.mapToInt(i -> (employee.getTrainingsAttended() > 5 & i < 10 ) ? i+1 : i);
+		gradeStream1.mapToInt(i -> (employee.getTrainingsAttended() > 5 & i < 10 ) ? i+1 : i)
+				   .sorted()
+				   .forEach(i -> System.out.println(i));
 		
-		employee.setLastYearMaxGrade(intGradeStream.max().getAsInt());*/
-		
-		ArrayList<Employee> empList = new ArrayList<Employee>();
-		
-		empList.add(employee);
-		empList.add(employee1);
-		empList.add(employee2);
-		empList.add(employee3);
-	/*	
-		
-		empList.stream()
-		.map(emp1 -> emp1.setLastYearMaxGrade((employee.getTrainingsAttended() > 5 & i < 10 ) ? i+1 : i));
-		
-	*/			
+			
 		}
 	
 	
