@@ -2,7 +2,7 @@ package Java8P.Static.we.test1;
 
 public class StaticImportE1 {
 	
-	public static String name = "Java Static Veriable";
+	public static String NAME = "Java Static Veriable";
 	
 	public static void printS(String commnet) {
 		
