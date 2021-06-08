@@ -22,12 +22,13 @@ public class Casting {
 	
 	}
 	
- 
+	
+	
 	
 }
 
 
-interface One1 {
+ interface One1 {
 	
 //	private void someMethod() {	}
 

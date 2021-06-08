@@ -12,6 +12,7 @@ public class LoopWe {
 
 				if(arg.equalsIgnoreCase("one"))
 				{
+					System.out.println("one");
 					continue one_label;
 
 				}
