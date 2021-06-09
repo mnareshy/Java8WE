@@ -1,0 +1,15 @@
+
+java --list-modules    // to list all the modules
+java --describe-module java.base  // description of package
+
+
+jdeps --print-modules-deps -m java.sql
+jdeps --print-modules-deps --module java.sql
+
+jdeps --list-reuced-deps -m java.sql
+deps --list-deps -m java.sql
+
+
+
+java --module-path D:\Labs\workspace\JavaSETestModuleOne\bin --module JavaSETestModuleOne/modules.we.TestModuleOne
+java -p "D:\Labs\workspace\JavaSETestModuleOne\bin" -m JavaSETestModuleOne/modules.we.TestModuleOne
