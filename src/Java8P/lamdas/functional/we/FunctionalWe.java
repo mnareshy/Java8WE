@@ -36,10 +36,13 @@ public class FunctionalWe {
 		strsList.removeIf(prediateNwords);
 		System.out.println(strsList);
 
+		
+		StringBuilder strBuilder = new StringBuilder();
 		//Consume		
 		Consumer<String> strBuilderConsumer = str -> {
 
-			StringBuilder strBuilder = new StringBuilder(str);	
+//			StringBuilder strBuilder = new StringBuilder(str);	
+			strBuilder.append(str);
 			strBuilder.insert(0,LocalDateTime.now() + " : ");
 			strBuilder.insert(0,FunctionalWe.class.descriptorString()+ " : ");
 
@@ -49,7 +52,7 @@ public class FunctionalWe {
 		};
 
 		strBuilderConsumer.accept("Testing Cosumer");
-
+		System.out.println(strBuilder);
 
 		//	Supplier	
 

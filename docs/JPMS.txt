@@ -3,13 +3,47 @@ java --list-modules    // to list all the modules
 java --describe-module java.base  // description of package
 
 
-jdeps --print-modules-deps -m java.sql
-jdeps --print-modules-deps --module java.sql
+jdeps --print-module-deps -m java.sql // to list all module dependencies 
+jdeps --print-module-deps --module java.sql // to list all module dependencies 
 
-jdeps --list-reuced-deps -m java.sql
-deps --list-deps -m java.sql
+jdeps --list-reduced-deps -m java.sql // to list all module dependencies 
+jdeps --list-deps -m java.sql // to list all module dependencies  including transitive 
+
+jdeps --check  java.sql
 
 
-
+// to run the module
 java --module-path D:\Labs\workspace\JavaSETestModuleOne\bin --module JavaSETestModuleOne/modules.we.TestModuleOne
 java -p "D:\Labs\workspace\JavaSETestModuleOne\bin" -m JavaSETestModuleOne/modules.we.TestModuleOne
+
+// create a jar of module
+jar --create --file ModuleOne.jar --main-class modules.we.TestModuleOne -c D:\Labs\workspace\JavaSETestModuleOne\bin\.
+jar --create --file JavaSETestModuleOne.jar --main-class modules.we.TestModuleOne -c D:\Labs\workspace\JavaSETestModuleOne\bin\.
+jar -f ModuleOne.jar --list // to list the content of modules
+
+
+
+jar -f JavaSETestModuleOne.jat -d //  description of  the module
+java --module-path .  --describe-module JavaSETestModuleOne //  description of  the module
+java -p . -d JavaSETestModuleOne //  description of  the module
+
+// to run the module from jar
+java --module-path . --module JavaSETestModuleOne
+
+java --dry-run -p . --module modulename  // Loads the main class but does not run it, This is the test the module dependencies satisfied
+
+java --module-path . --describe-module JavaSETestModuleOne //  for the description of module 
+java -p . -d JavaSETestModuleOne
+
+
+javac -d bin --module-source-path . --module JavaSETestModuleOne \\while compiling --module you must also specify the source
+javac -d bin -p . --module-source-path . --module JavaSETestModuleOne \\ use --module-path /-p when your code has dependencies on existing modules
+
+ 
+ jar --file JavaSETestModuleOne.jar --describe-module \\simiular to java describe but includes mail class as well
+ jar -f JavaSETestModuleOne.jar -d -module 
+ 
+ 
+ 
+ 
+ 
